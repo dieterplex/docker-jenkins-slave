@@ -9,7 +9,7 @@ See http://docs.docker.io/en/latest/installation/ubuntulinux/
 Install docker plugin
 ---------------------
 
-From http://<Jenkins>:8080/pluginManager/available install Docker and Credentials Plugins
+From http://&lt;Jenkins&gt;:8080/pluginManager/available install Docker and Credentials Plugins
 
 See https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin
 
@@ -17,7 +17,7 @@ See https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin
 Add Docker option
 -----------------
 
-Here assume you are install docker alone with jenkins server.
+Here assume you install docker alone with jenkins server.
 
     echo DOCKER_OPTS="-H=tcp://127.0.0.1:4243" >> /etc/default/docker
     service docker restart
