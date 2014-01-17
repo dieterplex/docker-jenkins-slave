@@ -6,13 +6,12 @@ Install Docker
 See http://docs.docker.io/en/latest/installation/ubuntulinux/
 
 
-Install docker plugin
+Install Jenkins plugin
 ---------------------
 
-From http://&lt;Jenkins&gt;:8080/pluginManager/available install Docker and Credentials Plugins
+From http://&lt;Jenkins&gt;:8080/pluginManager/available install Docker and SSH Slave Plugins
 
-See https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin
-
+See https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin and https://wiki.jenkins-ci.org/display/JENKINS/SSH+Slaves+plugin
 
 Add Docker option
 -----------------
