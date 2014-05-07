@@ -12,8 +12,15 @@ ENV DEBCONF_NOWARNINGS yes
 # Installing the build environment
 #RUN apt-get install -y build-essential devscripts fakeroot quilt dh-make automake libdistro-info-perl less nano python-dev
 
+# Trick to Install fuse(openjdk7 dependency) because of container permission issue.
+#RUN apt-get -y install fuse || true
+#RUN rm -rf /var/lib/dpkg/info/fuse.postinst
+#RUN apt-get -y install fuse
+#RUN apt-get install -y openjdk-7-jdk
+
 RUN echo deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse > /etc/apt/sources.list && \
     apt-get -qq update && apt-get -y install vim git openssh-server default-jre-headless python-pip
+
 # Add jenkins user
 RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 changeme) jenkins && \
     su - jenkins -c 'git config --global user.email "jenkins@yourdomain.com"' && \
