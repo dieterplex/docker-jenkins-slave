@@ -14,9 +14,11 @@ ENV DEBCONF_NOWARNINGS yes
 
 RUN echo deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse > /etc/apt/sources.list && \
     apt-get -qq update && apt-get -y install vim git openssh-server default-jre-headless python-pip
+# Add jenkins user
 RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 changeme) jenkins && \
     su - jenkins -c 'git config --global user.email "jenkins@yourdomain.com"' && \
     su - jenkins -c 'git config --global user.name "Jenkins"'
-RUN echo root:chageme | chpasswd
+# Fix root passwd
+RUN echo root:changeme | chpasswd
 RUN apt-get clean && mkdir /var/run/sshd
 
