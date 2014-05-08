@@ -18,8 +18,8 @@ ENV DEBCONF_NOWARNINGS yes
 #RUN apt-get -y install fuse
 #RUN apt-get install -y openjdk-7-jdk
 
-RUN echo deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse > /etc/apt/sources.list && \
-    apt-get -qq update && apt-get -y install vim git openssh-server default-jre-headless python-pip
+RUN echo deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse > /etc/apt/sources.list
+RUN apt-get -qq update && apt-get -y install vim git openssh-server default-jre-headless python-pip
 
 # Add jenkins user
 RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 changeme) jenkins && \
