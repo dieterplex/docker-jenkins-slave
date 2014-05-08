@@ -33,6 +33,10 @@ RUN echo root:promise | chpasswd
 
 RUN apt-get install -y build-essential python-dev
 RUN apt-get clean && mkdir /var/run/sshd
+ADD id_rsa_jenkins /root/.ssh/id_rsa
+RUN chmod go-rwx -R /root/.ssh
+RUN mkdir /root/.m2 ; \
+    echo "<settings><mirrors><mirror>\n<mirrorOf>*</mirrorOf><url>http://10.90.0.93:8081/artifactory/repo</url><id>artifactory</id>\n</mirror></mirrors></settings>" > /root/.m2/settings.xml
 
 # ENV APACHE_RUN_USER www-data
 # ENV APACHE_RUN_GROUP www-data
