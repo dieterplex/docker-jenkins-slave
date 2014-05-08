@@ -20,6 +20,7 @@ ENV DEBCONF_NOWARNINGS yes
 
 RUN echo deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse > /etc/apt/sources.list
 RUN apt-get update
+RUN apt-get -f install
 RUN apt-get -y install vim git openssh-server default-jre-headless python-pip
 
 # Add jenkins user
