@@ -16,7 +16,7 @@ ENV DEBCONF_NOWARNINGS yes
 #RUN apt-get -y install fuse || true
 #RUN rm -rf /var/lib/dpkg/info/fuse.postinst
 #RUN apt-get -y install fuse
-#RUN apt-get install -y openjdk-7-jdk
+#RUN apt-get install -y openjdk-7-jdk && update-java-alternatives -s java-1.7.0-openjdk-amd64
 
 RUN echo deb http://archive.ubuntu.com/ubuntu/ precise          main restricted universe multiverse >  /etc/apt/sources.list ; \
     echo deb http://archive.ubuntu.com/ubuntu/ precise-updates  main restricted universe multiverse >> /etc/apt/sources.list ; \
