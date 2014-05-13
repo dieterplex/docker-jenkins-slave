@@ -27,7 +27,7 @@ RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty          main restricted u
 RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 changeme) jenkins && \
     su - jenkins -c 'git config --global user.email "jenkins@yourdomain.com"' && \
     su - jenkins -c 'git config --global user.name "Jenkins"'
-# Fix root passwd
-RUN echo root:changeme | chpasswd
+# Fix root passwd and sshd_config
+RUN echo root:changeme | chpasswd && sed -i -e 's/^\(PermitRootLogin.*\)/#\1/' /etc/ssh/sshd_config
 RUN apt-get clean && mkdir /var/run/sshd
 
