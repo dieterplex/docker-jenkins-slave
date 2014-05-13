@@ -25,6 +25,9 @@ RUN echo deb http://tw.archive.ubuntu.com/ubuntu/ trusty          main restricte
     apt-get -qq update ; \
     apt-get -y install vim git openssh-server default-jre-headless python-pip
 
+# ironman
+RUN apt-get install -y syslinux genisoimage php5-cli xorriso
+
 # Add jenkins user
 RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 changeme) jenkins && \
     su - jenkins -c 'git config --global user.email "jenkins@yourdomain.com"' && \
