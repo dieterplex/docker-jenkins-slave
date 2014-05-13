@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 MAINTAINER Dieter Hsu "dieterplex@gmail.com"
 
 # Set the env variables to non-interactive
@@ -18,9 +18,9 @@ ENV DEBCONF_NOWARNINGS yes
 #RUN apt-get -y install fuse
 #RUN apt-get install -y openjdk-7-jdk && update-java-alternatives -s java-1.7.0-openjdk-amd64
 
-RUN echo deb http://archive.ubuntu.com/ubuntu/ precise          main restricted universe multiverse >  /etc/apt/sources.list ; \
-    echo deb http://archive.ubuntu.com/ubuntu/ precise-updates  main restricted universe multiverse >> /etc/apt/sources.list ; \
-    echo deb http://archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse >> /etc/apt/sources.list ; \
+RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty          main restricted universe multiverse >  /etc/apt/sources.list ; \
+    echo deb http://archive.ubuntu.com/ubuntu/ trusty-updates  main restricted universe multiverse >> /etc/apt/sources.list ; \
+    echo deb http://archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse >> /etc/apt/sources.list ; \
     apt-get update && apt-get -y install vim git openssh-server default-jre-headless python-pip
 
 # Add jenkins user
