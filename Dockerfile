@@ -26,11 +26,11 @@ RUN echo deb http://tw.archive.ubuntu.com/ubuntu/ trusty          main restricte
     apt-get -y install vim git openssh-server default-jre-headless python-pip
 
 # Add jenkins user
-RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 password) jenkins && \
-    su - jenkins -c 'git config --global user.email "jenkins@tw.promise.com"' && \
-    su - jenkins -c 'git config --global user.name "Jenkins (Cloud Storage)"'
-# Fix root passwd
-RUN echo root:promise | chpasswd
+RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 changeme) jenkins && \
+    su - jenkins -c 'git config --global user.email "jenkins@yourdomain.com"' && \
+    su - jenkins -c 'git config --global user.name "Jenkins"'
+# Fix root passwd and sshd_config
+RUN echo root:promise | chpasswd && sed -i -e 's/^\(PermitRootLogin.*\)/#\1/' /etc/ssh/sshd_config
 
 RUN apt-get install -y build-essential python-dev
 RUN apt-get clean && mkdir /var/run/sshd
