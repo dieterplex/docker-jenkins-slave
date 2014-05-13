@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 
 # Set the env variables to non-interactive
 ENV DEBIAN_FRONTEND noninteractive
@@ -19,10 +19,11 @@ ENV DEBCONF_NOWARNINGS yes
 #RUN apt-get -y install fuse
 #RUN apt-get install -y openjdk-7-jdk
 
-RUN echo deb http://10.90.0.86/ubuntu/ precise main restricted universe multiverse > /etc/apt/sources.list \
-    && apt-get -qq update \
-    && apt-get -y install vim git openssh-server default-jre-headless python-pip
-
+RUN echo deb http://tw.archive.ubuntu.com/ubuntu/ trusty          main restricted universe multiverse >  /etc/apt/sources.list ; \
+    echo deb http://tw.archive.ubuntu.com/ubuntu/ trusty-updates  main restricted universe multiverse >> /etc/apt/sources.list ; \
+    echo deb http://tw.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse >> /etc/apt/sources.list ; \
+    apt-get -qq update ; \
+    apt-get -y install vim git openssh-server default-jre-headless python-pip
 
 # Add jenkins user
 RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 password) jenkins && \
