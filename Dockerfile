@@ -36,6 +36,7 @@ RUN useradd -m -d /var/lib/jenkins -s /bin/bash -p $(openssl passwd -1 changeme)
 RUN echo root:promise | chpasswd && sed -i -e 's/^\(PermitRootLogin.*\)/#\1/' /etc/ssh/sshd_config
 
 RUN apt-get install -y build-essential python-dev
+RUN apt-get install -y ruby1.9.3 && gem install fpm
 RUN apt-get clean && mkdir /var/run/sshd
 ADD id_rsa_jenkins /root/.ssh/id_rsa
 RUN chmod go-rwx -R /root/.ssh
